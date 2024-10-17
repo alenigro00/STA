@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div e css</title>
+   <style>
+        #scatola1{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola2{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola3{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola4{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola5{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola6{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola7{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola8{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola9{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #scatola10{ background-color: green; width: 600px;height: 600px;margin: 50px; padding: 50px; }
+        #piccola1{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola2{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola3{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola4{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola5{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola6{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola7{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola8{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola9{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola10{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola11{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola12{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola13{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola14{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola15{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola16{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola17{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola18{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        #piccola20{background-color: white;width: 450px; height:400px; margin:30px; padding:5px;}
+        
+        </style>
+        </head>
+    <div id="scatola1">
+      <div id="piccola1">
+     <img src="ariane5.jpg" width="450px" height="400px">
+     </div>
+     <div id="piccola2">
+        Circa 370 milioni di dollari
+        Il lancio inaugurale del razzo Ariane 5 dell'Agenzia Spaziale Europea fallì a causa di un bug nel software. Il sistema di navigazione riutilizzava codice dall'Ariane 4, che non era stato adattato ai cambiamenti delle prestazioni del nuovo razzo. Ciò provocò un errore di overflow in una conversione di un numero a virgola mobile. Il razzo deviò dalla sua rotta e fu distrutto.
+        Perdita di un razzo da 370 milioni di dollari e di carichi utili scientifici di alto valore.
+     </div>
+     <div>
+        <div id="scatola2">
+            <div id="piccola3">
+           <img src="MarsClimateOrbiter.jpg" width="450px" height="400px">
+           </div>
+           <div id="piccola4">
+            Circa 193 milioni di dollari
+            Questo errore si verificò perché il software che controllava il sistema di navigazione del Mars Climate Orbiter utilizzava unità imperiali (libbre-forza secondi) invece di unità metriche (newton secondi). La sonda entrò nell'atmosfera di Marte troppo bassa e fu distrutta.
+            Perdita della sonda spaziale e della missione.
+        </div>
+        <div>
+            <div id="scatola3">
+                <div id="piccola5">
+               <img src="knightcapital.jpg" width="450px" height="400px">
+               </div>
+               <div id="piccola6">
+                Circa 440 milioni di dollari in 45 minuti
+                Knight Capital, una grande società di trading finanziario, installò un aggiornamento del software difettoso su uno dei suoi server. Questo software iniziò a fare milioni di operazioni di borsa errate, facendo crollare il prezzo delle azioni. L'azienda perse circa 440 milioni di dollari in meno di un'ora e fu successivamente acquisita.
+                Perdita finanziaria enorme e fine dell'azienda come entità indipendente. 
+            </div>
+            <div>
+                <div id="scatola4">
+                    <div id="piccola7">
+                   <img src="therac25.jpg" width="450px" height="400px">
+                   </div>
+                   <div id="piccola8">
+                    Diverse vite umane
+                    Therac-25 era una macchina per la radioterapia utilizzata negli ospedali. A causa di bug nel software, in alcune circostanze la macchina somministrava dosi di radiazioni letali ai pazienti. Il bug si manifestava solo in determinate sequenze operative, quindi non fu scoperto subito.
+                    Almeno 5 persone morirono e molte altre subirono gravi lesioni a causa di sovraesposizione alle radiazioni.
+                </div>
+                <div>
+                    <div id="scatola5">
+                        <div id="piccola9">
+                       <img src="therac25.jpg" width="450px" height="400px">
+                       </div>
+                       <div id="piccola10">
+                        Perdita di vite e milioni di dollari
+                        Un errore di arrotondamento in un sistema di temporizzazione del software del Patriot Missile causò il fallimento dell'intercettazione di un missile Scud iracheno. Il missile colpì una caserma dell'esercito statunitense, uccidendo 28 soldati.
+                        Perdita di vite umane e di fiducia nella tecnologia di difesa.
+                    </div>
+
+
