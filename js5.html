@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcola il dislivello</title>
+    <title>Calcola il dislivello e il tempo di percorrenza</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
-        #container1 {
+        #container1, #container2 {
             padding: 20px;
             border: 1px solid black;
             background-image: url('una montagna.png');
@@ -19,41 +19,26 @@
             height: 600px; 
             text-align: center;
             border-radius: 10px;
-           
         }
-        input {
-         
+        input, button {
             padding: 10px;
             margin: 5px 0;
             border-radius: 5px;
             border: none;
         }
         button {
-            padding: 10px 20px;
-            margin: 10px;
             background-color: #4CAF50;
             color: white;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
-            
-            
         }
         button:hover {
             background-color: #45a049;
         }
         button:active {
             background-color: #3e8e41;
-           
         }
-        #out1 {
+        .output {
             margin-top: 20px;
-            
-        }
-    
-        #out2 {
-            margin-top: 20px;
-            
         }
     </style>
 </head>
@@ -61,45 +46,55 @@
     <div id="container1">
         <h2>Calcola il dislivello</h2>
         <p>Inserisci i dati nella tabella e premi il tasto "Calcola dislivello"</p>
-        <p><label for="partenza">Partenza </label></p>
+        <p><label for="partenza">Partenza</label></p>
         <input id="partenza" type="number">
-        <p><label for="pausa">Pausa trekking </label></p>
+        <p><label for="pausa">Pausa trekking</label></p>
         <input id="pausa" type="number">
-        <p><label for="arrivo">Arrivo </label></p>
+        <p><label for="arrivo">Arrivo</label></p>
         <input id="arrivo" type="number">
-        <p></p>
-        <button onclick="calcola()">Calcola dislivello</button>
-        <p id="out1"></p>
+        <button onclick="calcoladislivello()">Calcola dislivello</button>
+        <p id="out1" class="output"></p>
     </div>
+
     <div id="container2">
         <h2>Calcola il tempo di percorrenza</h2>
         <p>Inserisci gli orari di partenza e di arrivo</p>
-        <p><label for="orario partenza">orario partenza </label></p>
-        <input id="orario partenza" type="time">
-        <p><label for="orario arrivo">orario arrivo </label></p>
-        <input id="orario arrivo" type="time">
-        <button onclick="calcola()">Calcola tempo</button>
-        <p id="out2"></p>
+        <p><label for="orarioPartenza">Orario partenza</label></p>
+        <input id="orarioPartenza" type="time">
+        <p><label for="orarioArrivo">Orario arrivo</label></p>
+        <input id="orarioArrivo" type="time">
+        <button onclick="calcolaTempo()">Calcola tempo</button>
+        <p id="out2" class="output"></p>
     </div>
 
-    
-
     <script>
-        function calcola() {
-            let i1 = parseInt(document.getElementById("partenza").value);
-            let i2 = parseInt(document.getElementById("pausa").value);
-            let i3 = parseInt(document.getElementById("arrivo").value);
-            let risultato = i3 - i1;
-            document.getElementById("out1").innerHTML = "Il dislivello totale è: " + risultato + " metri.";
+        function calcoladislivello() {
+            let partenza = parseInt(document.getElementById("partenza").value);
+            let arrivo = parseInt(document.getElementById("arrivo").value);
+            let dislivello = arrivo - partenza;
+            document.getElementById("out1").innerText = "Il dislivello totale è: " + dislivello + " metri.";
         }
 
-    <script>
-        function calcola() {
-            let i1 = parseInt(document.getElementById("orario partenza").value);
-            let i2 = parseInt(document.getElementById("orario arrivo").value);
-            let risultato = i2 - i1;
-            document.getElementById("out2").innerHTML = "Il tempo totale è: " + risultato ;
+        function calcolaTempo() {
+            let partenza = document.getElementById("orarioPartenza").value.split(":");
+            let arrivo = document.getElementById("orarioArrivo").value.split(":");
+
+            let orePartenza = parseInt(partenza[0]);
+            let minutiPartenza = parseInt(partenza[1]);
+
+            let oreArrivo = parseInt(arrivo[0]);
+            let minutiArrivo = parseInt(arrivo[1]);
+
+            let minutiTotaliPartenza = orePartenza * 60 + minutiPartenza;
+            let minutiTotaliArrivo = oreArrivo * 60 + minutiArrivo;
+
+            let differenzaMinuti = minutiTotaliArrivo - minutiTotaliPartenza;
+            let ore = Math.floor(differenzaMinuti / 60);
+            let minuti = differenzaMinuti % 60;
+
+            document.getElementById("out2").innerText = "Tempo di percorrenza: " + ore + " ore e " + minuti + " minuti.";
         }
     </script>
 </body>
 </html>
+  
