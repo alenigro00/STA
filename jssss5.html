@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcola il dislivello</title>
+    <title>Calcola il dislivello e il tempo di percorrenza</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
-        #container1 {
+        #container1{
             padding: 20px;
             border: 1px solid black;
             background-image: url('una montagna.png');
@@ -19,65 +19,115 @@
             height: 600px; 
             text-align: center;
             border-radius: 10px;
-           
         }
-        input {
-         
+        input, button {
             padding: 10px;
             margin: 5px 0;
             border-radius: 5px;
             border: none;
         }
         button {
-            padding: 10px 20px;
-            margin: 10px;
             background-color: #4CAF50;
             color: white;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
-            
-            
         }
         button:hover {
             background-color: #45a049;
-            transform: scale(1.05);
         }
         button:active {
             background-color: #3e8e41;
-           
         }
-        #out1 {
+        .output {
             margin-top: 20px;
-            
         }
+
+        #container2 {
+            padding: 20px;
+            border: 1px solid black;
+            background-image: url(mon);
+            background-size: cover;
+            color: white;
+            margin: 50px auto;
+            height: 600px; 
+            text-align: center;
+            border-radius: 10px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:active {
+            background-color: #3e8e41;
+        }
+        .output {
+            margin-top: 20px;
+        }
+    
+
     </style>
 </head>
 <body>
     <div id="container1">
         <h2>Calcola il dislivello</h2>
         <p>Inserisci i dati nella tabella e premi il tasto "Calcola dislivello"</p>
-        <p><label for="partenza">Partenza </label></p>
+        <p><label for="partenza">Partenza</label></p>
         <input id="partenza" type="number">
-        <p><label for="pausa">Pausa trekking </label></p>
+        <p><label for="pausa">Pausa trekking</label></p>
         <input id="pausa" type="number">
-        <p><label for="arrivo">Arrivo </label></p>
+        <p><label for="arrivo">Arrivo</label></p>
         <input id="arrivo" type="number">
-        <p></p>
-        <button onclick="calcola()">Calcola dislivello</button>
-        <p id="out1"></p>
+        <button onclick="calcoladislivello()">Calcola dislivello</button>
+        <p id="out1" class="output"></p>
+    </div>
+
+    <div id="container2">
+        <h2>Calcola il tempo di percorrenza</h2>
+        <p>Inserisci gli orari di partenza e di arrivo</p>
+        <p><label for="orarioPartenza">Orario partenza</label></p>
+        <input id="ora1" type="time"> : <input id="min1" type="time">
+        <p><label for="orarioArrivo">Orario arrivo</label></p>
+        <input id="ora2" type="time"> :  <input id="min2" type="time">
+        <button onclick="calcolaTempo()">Calcola tempo</button>
+        <p id="out2" class="output"></p>
+    
     </div>
 
     <script>
-        function calcola() {
-            let i1 = parseInt(document.getElementById("partenza").value);
-            let i2 = parseInt(document.getElementById("pausa").value);
-            let i3 = parseInt(document.getElementById("arrivo").value);
-            let risultato = i3 - i1;
-            document.getElementById("out1").innerHTML = "Il dislivello totale è: " + risultato + " metri.";
+        function calcoladislivello() {
+            let partenza = parseInt(document.getElementById("partenza").value);
+            let arrivo = parseInt(document.getElementById("arrivo").value);
+            let dislivello = arrivo - partenza;
+            document.getElementById("out1").innerText = "Il dislivello totale è: " + dislivello + " metri.";
         }
+
+        function calcolaTempo() {
+            let partenza = document.getElementById("orarioPartenza").value.split(":");
+            let arrivo = document.getElementById("orarioArrivo").value.split(":");
+            document.getElementById("out2").innerHTML=risultato;
+        }
+
+        // Funzione per calcolare la differenza in minuti
+        function calcolaDifferenza(ora1, minuto1, ora2, minuto2) {
+        // Converti entrambe le ore e i minuti in minuti totali
+        const minutiTotali1 = (ora1 * 60) + minuto1;
+        const minutiTotali2 = (ora2 * 60) + minuto2;
+
+        // Calcola la differenza in valore assoluto
+        const differenza = Math.abs(minutiTotali1 - minutiTotali2);
+
+    return differenza;
+}
+           
     </script>
 </body>
 </html>
-
-
