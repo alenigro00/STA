@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica, legge di Ohm</title>
+</head>
+<body>
+    <h1>Verifica, legge di Ohm</h1>
+    <ul>
+        <li> V = voltaggio (Volt) </li>
+        <li> I = intensità di corrente (Ampere) </li>
+        <li> R = resistenza (Ohm) </li>
+    </ul>
+
+    <input type="text" id="formula" placeholder="Inserisci una formula (1, 2 o 3)" oninput="calcola()"><br>
+    <input type="text" id="v1" placeholder="Inserisci il primo valore" oninput="calcola()"><br>
+    <input type="text" id="v2" placeholder="Inserisci il secondo valore" oninput="calcola()"><br>
+    
+    <p id="output"></p>
+
+    <script>
+        function calcola() {
+            let formula = document.getElementById("formula").value;
+            let v1 = document.getElementById("v1").value;
+            let v2 = document.getElementById("v2").value;
+            let risultato;
+
+            if (formula == "1") {
+                risultato = v1 * v2;
+                document.getElementById("output").innerText = "Il voltaggio (V) è: " + risultato + " Volt";
+            } else if (formula == "2") {
+                risultato = v1 / v2;
+                document.getElementById("output").innerText = "L'intensità di corrente (I) è: " + risultato + " Ampere";
+            } else if (formula == "3") {
+                risultato = v1 / v2;
+                document.getElementById("output").innerText = "La resistenza (R) è: " + risultato + " Ohm";
+            } else {
+                document.getElementById("output").innerText = "Seleziona una formula valida (1, 2 o 3).";
+            }
+        }
+    </script>
+</body>
+</html>
