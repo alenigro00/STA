@@ -1,52 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=ù, initial-scale=1.0">
-    <title>Pagina web legge di Ohm</title>
-</head>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/w3css/3/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <body>
- <H1>Pagina web legge di Ohm</H1>
- <h2>Definizione prima legge di Ohm:</h2>
- <p> La prima legge di Ohm afferma che la corrente elttrica che attraversa un conduttore tra 2 punti è direttamente proporzionale alla tensione applicata questi 2 punti.
 
- </p>   
+<!-- Navigation -->
+<nav class="w3-bar w3-black">
+  <a href="#home" class="w3-button w3-bar-item">Home</a> <ahref="https://alenigro00.github.io/STA/email.html">Contact</a>
+   <a href="https://alenigro00.github.io/STA/email.html">Contact</a>
+  <a href="#band" class="w3-button w3-bar-item">Band</a>
+  <a href="#tour" class="w3-button w3-bar-item">Tour</a>
+  <a href="#contact" class="w3-button w3-bar-item">Contact</a>
+</nav>
 
- <h2> Biografia su George Simon Ohm:</h2>
- <P>Georg Simon Ohm fu un fisico tedesco noto per aver formulato la Legge di Ohm, che stabilisce la relazione tra tensione, corrente e resistenza elettrica. La sua opera principale fu pubblicata nel 1827 e inizialmente non fu ben accolta, ma successivamente ottenne il riconoscimento meritato, inclusa la Medaglia Copley nel 1841. L'unità di misura della resistenza elettrica, l'ohm (Ω), porta il suo nome.</P>
-<img src="ohm.jpg" alt="Georg Simon Ohm">
+<!-- Slide Show -->
+<section>
+  <img class="mySlides" src="img_band_la.jpg"
+  style="width:100%">
+  <img class="mySlides" src="img_band_ny.jpg"
+  style="width:100%">
+  <img class="mySlides" src="img_band_chicago.jpg"
+  style="width:100%">
+</section>
 
- <body>
-    <h2>Calcolatore legge di Ohm</h2>
-    <ul>
-        <li> V = voltaggio (Volt) </li>
-        <li> I = intensità di corrente (Ampere) </li>
-        <li> R = resistenza (Ohm) </li>
-    </ul>
 
-    <input type="text" id="formula" placeholder="Inserisci una formula (1, 2 o 3)" oninput="calcola()"><br>
-    <input type="text" id="v1" placeholder="Inserisci il primo valore" oninput="calcola()"><br>
-    <input type="text" id="v2" placeholder="Inserisci il secondo valore" oninput="calcola()"><br>
-    
-    <p id="output"></p>
 
-    <script>
-        function calcola() {
-            let formula = document.getElementById("formula").value;
-            let v1 = document.getElementById("v1").value;
-            let v2 = document.getElementById("v2").value;
-            let risultato;
 
-            if (formula == "1") {
-                risultato = v1 * v2;
-                document.getElementById("output").innerText = "Il voltaggio (V) è: " + risultato + " Volt";
-            } else if (formula == "2") {
-                risultato = v1 / v2;
-                document.getElementById("output").innerText = "L'intensità di corrente (I) è: " + risultato + " Ampere";
-            } else if (formula == "3") {
-                risultato = v1 / v2;
-                document.getElementById("output").innerText = "La resistenza (R) è: " + risultato + " Ohm";
-            } else {
-                document.getElementById("output").innerText = "Seleziona una formula valida (1, 2 o 3).";
-            }
-        }
+
+<section class="w3-container w3-center w3-content" style="max-width:600px">
+  <h2>Calcolatore legge di Ohm</h2>
+  <ul>
+    <li>V = voltaggio (Volt)</li>
+    <li>I = intensità di corrente (Ampere)</li>
+    <li>R = resistenza (Ohm)</li>
+  </ul>
+  <input type="text" id="formula" placeholder="Inserisci una formula (1, 2 o 3)" oninput="calcola()"><br>
+  <input type="text" id="v1" placeholder="Inserisci il primo valore" oninput="calcola()"><br>
+  <input type="text" id="v2" placeholder="Inserisci il secondo valore" oninput="calcola()"><br>
+  <p id="output"></p>
+  <script>
+    function calcola() {
+      let formula = document.getElementById("formula").value;
+      let v1 = document.getElementById("v1").value;
+      let v2 = document.getElementById("v2").value;
+      let risultato;
+      if (formula == "1") {
+        risultato = v1 * v2;
+        document.getElementById("output").innerText = "Il voltaggio (V) è: " + risultato + " Volt";
+      } else if (formula == "2") {
+        risultato = v1 / v2;
+        document.getElementById("output").innerText = "L'intensità di corrente (I) è: " + risultato + " Ampere";
+      } else if (formula == "3") {
+        risultato = v1 / v2;
+        document.getElementById("output").innerText = "La resistenza (R) è: " + risultato + " Ohm";
+      } else {
+        document.getElementById("output").innerText = "Seleziona una formula valida (1, 2 o 3).";
+      }
+    }
+  </script>
+</section>
+<section class="w3-container w3-center w3-content" style="max-width:600px">
+  <h1>Pagina web legge di Ohm</h1>
+  <h2>Definizione prima legge di Ohm:</h2>
+  <p>La prima legge di Ohm afferma che la corrente elettrica che attraversa un conduttore tra 2 punti è direttamente proporzionale alla tensione applicata a questi 2 punti.</p>   
+  <h2>Biografia su George Simon Ohm:</h2>
+  <p>Georg Simon Ohm fu un fisico tedesco noto per aver formulato la Legge di Ohm, che stabilisce la relazione tra tensione, corrente e resistenza elettrica. La sua opera principale fu pubblicata nel 1827 e inizialmente non fu ben accolta, ma successivamente ottenne il riconoscimento meritato, inclusa la Medaglia Copley nel 1841. L'unità di misura della resistenza elettrica, l'ohm (Ω), porta il suo nome.</p>
+  
+</section>
+
+<!-- Band Members -->
+<section class="w3-row-padding w3-center w3-light-grey">
+
+    <p>Georg Simon Ohm</p>
+    <img src="ohm.jpg" width="150" height="100"
+  
+  </article>
+  <article class="w3-third">
+ 
+</section>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge">
+  <a href="#"><i class="fa fa-facebook-official"></i></a>
+  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-flickr"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <p class="w3-medium">
+  Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+  </p>
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000);
+}
+</script>
+
+</body>
+</html>
+
