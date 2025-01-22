@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=ù, initial-scale=1.0">
+    <title>Pagina web legge di Ohm</title>
+</head>
+<body>
+ <H1>Pagina web legge di Ohm</H1>
+ <h2>Definizione prima legge di Ohm:</h2>
+ <p> La prima legge di Ohm afferma che la corrente elttrica che attraversa un conduttore tra 2 punti è direttamente proporzionale alla tensione applicata questi 2 punti.
+
+ </p>   
+
+ <h2> Biografia su George Simon Ohm:</h2>
+ <P>Georg Simon Ohm fu un fisico tedesco noto per aver formulato la Legge di Ohm, che stabilisce la relazione tra tensione, corrente e resistenza elettrica. La sua opera principale fu pubblicata nel 1827 e inizialmente non fu ben accolta, ma successivamente ottenne il riconoscimento meritato, inclusa la Medaglia Copley nel 1841. L'unità di misura della resistenza elettrica, l'ohm (Ω), porta il suo nome.</P>
+<img src="ohm.jpg" alt="Georg Simon Ohm">
+
+ <body>
+    <h2>Calcolatore legge di Ohm</h2>
+    <ul>
+        <li> V = voltaggio (Volt) </li>
+        <li> I = intensità di corrente (Ampere) </li>
+        <li> R = resistenza (Ohm) </li>
+    </ul>
+
+    <input type="text" id="formula" placeholder="Inserisci una formula (1, 2 o 3)" oninput="calcola()"><br>
+    <input type="text" id="v1" placeholder="Inserisci il primo valore" oninput="calcola()"><br>
+    <input type="text" id="v2" placeholder="Inserisci il secondo valore" oninput="calcola()"><br>
+    
+    <p id="output"></p>
+
+    <script>
+        function calcola() {
+            let formula = document.getElementById("formula").value;
+            let v1 = document.getElementById("v1").value;
+            let v2 = document.getElementById("v2").value;
+            let risultato;
+
+            if (formula == "1") {
+                risultato = v1 * v2;
+                document.getElementById("output").innerText = "Il voltaggio (V) è: " + risultato + " Volt";
+            } else if (formula == "2") {
+                risultato = v1 / v2;
+                document.getElementById("output").innerText = "L'intensità di corrente (I) è: " + risultato + " Ampere";
+            } else if (formula == "3") {
+                risultato = v1 / v2;
+                document.getElementById("output").innerText = "La resistenza (R) è: " + risultato + " Ohm";
+            } else {
+                document.getElementById("output").innerText = "Seleziona una formula valida (1, 2 o 3).";
+            }
+        }
