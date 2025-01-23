@@ -14,12 +14,19 @@
             height: 100vh;
             background-color: #f4f4f4;
         }
-        .content {
-            text-align: center;
+        .container {
+            display: flex;
             background: #ffffff;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+        }
+        .container img {
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+        .ohm {
+            text-align: left;
         }
         h1 {
             color: #333333;
@@ -31,16 +38,18 @@
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Biografia su George Simon Ohm</h1>
-        <p>Georg Simon Ohm, nato il 16 marzo 1789 a Erlangen, Germania, e morto il 6 luglio 1854 a Monaco di Baviera, è stato un fisico e matematico tedesco di grande rilievo. Figlio di un fabbro e di una sarta, Ohm ha ricevuto un'educazione scientifica e matematica straordinaria grazie al padre, un autodidatta di grande talento. In un'epoca in cui l'accesso all'istruzione era limitato, la sua formazione ha rappresentato un caso eccezionale.
+    <div class="container">
+        <img src="ohm.jpg" width="auto" height="auto" alt="Georg Simon Ohm">
+        <div class="ohm">
+            <h1>Biografia di Georg Simon Ohm</h1>
+            <p>Georg Simon Ohm, nato il 16 marzo 1789 a Erlangen, Germania, e morto il 6 luglio 1854 a Monaco di Baviera, è stato un fisico e matematico tedesco di grande rilievo. Figlio di un fabbro e di una sarta, Ohm ha ricevuto un'educazione scientifica e matematica straordinaria grazie al padre, un autodidatta di grande talento. In un'epoca in cui l'accesso all'istruzione era limitato, la sua formazione ha rappresentato un caso eccezionale.
 
 Dopo aver frequentato l'Università di Erlangen, Ohm ha lavorato come insegnante di matematica e fisica. Durante questi anni, ha condotto esperimenti di elettromagnetismo che lo hanno portato alla formulazione della Legge di Ohm nel 1827. Questa legge, che descrive la relazione tra tensione, corrente e resistenza in un circuito elettrico, è stata fondamentale per lo sviluppo dell'ingegneria elettrica. La sua scoperta, inizialmente non riconosciuta, gli ha valso infine una medaglia Copley nel 1842 e lo ha reso un punto di riferimento nella comunità scientifica.
 
 Nonostante le difficoltà iniziali nel far accettare le sue idee, Ohm ha continuato a lavorare e a pubblicare numerosi articoli scientifici. Oltre al suo lavoro sull'elettricità, ha contribuito allo sviluppo dell'acustica e ha studiato i fenomeni d'interferenza, ampliando il suo campo di ricerca. La sua tenacia e il suo impegno per la scienza gli hanno permesso di superare gli ostacoli e di lasciare un'eredità duratura.
 
 Georg Simon Ohm ha lavorato come professore in diverse istituzioni, tra cui il Politecnico di Norimberga e l'Università di Monaco. La sua carriera accademica gli ha permesso di influenzare molti studenti e colleghi, trasmettendo loro la sua passione per la ricerca scientifica. Ohm è deceduto il 6 luglio 1854 a Monaco di Baviera, lasciando un'impronta indelebile nel mondo della scienza.</p>
-        <img src="ohm.jpg" width="300" height="250" alt="Georg Simon Ohm">
+        </div>
     </div>
 </body>
 </html>
