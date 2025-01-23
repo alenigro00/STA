@@ -1,116 +1,218 @@
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/w3css/3/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background-color: white;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333; 
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #f2f2f2;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+</style>
+</head>
 <body>
 
-<!-- Navigation -->
-<nav class="w3-bar w3-black">
-  <a href="#home" class="w3-button w3-bar-item">Home</a> <ahref="https://alenigro00.github.io/STA/email.html">Contact</a>
-   <a href="https://alenigro00.github.io/STA/email.html">Contact</a>
-  <a href="#band" class="w3-button w3-bar-item">Band</a>
-  <a href="#tour" class="w3-button w3-bar-item">Tour</a>
-  <a href="#contact" class="w3-button w3-bar-item">Contact</a>
-</nav>
+<div class="topnav" id="myTopnav">
+  <a href="https://alenigro00.github.io/STA/biografiaohm.html">Biografia Simon Ohm</a>
+  <div class="dropdown">
+    <button class="dropbtn">HTML e CSS
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://alenigro00.github.io/STA/scheda%20personale.html">Scheda personale 1</a>
+      <a href="https://alenigro00.github.io/STA/I%20miei%20siti%20preferiti.html">Siti preferiti</a>
+      <a href="https://alenigro00.github.io/STA/Elenco%20puntato.html">Elenco puntato</a>
+      <a href="https://alenigro00.github.io/STA/Scheda%20personale.html">Scheda personale 2</a>
+      <a href="https://alenigro00.github.io/STA/esercizioscatole.html">Esercizio scatole</a>
+      <a href="https://alenigro00.github.io/STA/csspaddingmargin.html">Padding e margin</a>
+      <a href="https://alenigro00.github.io/STA/flipcard.html">Flip card</a>
+      <a href="https://alenigro00.github.io/STA/computer.html">Computer</a>
+      <a href="https://alenigro00.github.io/STA/bugsstorici.html">Bugs storici</a>
+      <a href="https://alenigro00.github.io/STA/propriet%C3%A0display.html">Proprietà display</a>
+      <a href="https://alenigro00.github.io/STA/modificabugstorici.html">Modifica bugs storici</a>
+      <a href="https://alenigro00.github.io/STA/lezione1.html">Lezione 1 </a>
+      <a href="https://alenigro00.github.io/STA/campoelettrico.html">Campo elettrico</a>
+    </div>
+  </div>
 
-<!-- Slide Show -->
-<section>
-  <img class="mySlides" src="img_band_la.jpg"
-  style="width:100%">
-  <img class="mySlides" src="img_band_ny.jpg"
-  style="width:100%">
-  <img class="mySlides" src="img_band_chicago.jpg"
-  style="width:100%">
-</section>
-
-
-
-
-
-<section class="w3-container w3-center w3-content" style="max-width:600px">
-  <h2>Calcolatore legge di Ohm</h2>
-  <ul>
-    <li>V = voltaggio (Volt)</li>
-    <li>I = intensità di corrente (Ampere)</li>
-    <li>R = resistenza (Ohm)</li>
-  </ul>
-  <input type="text" id="formula" placeholder="Inserisci una formula (1, 2 o 3)" oninput="calcola()"><br>
-  <input type="text" id="v1" placeholder="Inserisci il primo valore" oninput="calcola()"><br>
-  <input type="text" id="v2" placeholder="Inserisci il secondo valore" oninput="calcola()"><br>
-  <p id="output"></p>
-  <script>
-    function calcola() {
-      let formula = document.getElementById("formula").value;
-      let v1 = document.getElementById("v1").value;
-      let v2 = document.getElementById("v2").value;
-      let risultato;
-      if (formula == "1") {
-        risultato = v1 * v2;
-        document.getElementById("output").innerText = "Il voltaggio (V) è: " + risultato + " Volt";
-      } else if (formula == "2") {
-        risultato = v1 / v2;
-        document.getElementById("output").innerText = "L'intensità di corrente (I) è: " + risultato + " Ampere";
-      } else if (formula == "3") {
-        risultato = v1 / v2;
-        document.getElementById("output").innerText = "La resistenza (R) è: " + risultato + " Ohm";
-      } else {
-        document.getElementById("output").innerText = "Seleziona una formula valida (1, 2 o 3).";
-      }
-    }
-  </script>
-</section>
-<section class="w3-container w3-center w3-content" style="max-width:600px">
-  <h1>Pagina web legge di Ohm</h1>
-  <h2>Definizione prima legge di Ohm:</h2>
-  <p>La prima legge di Ohm afferma che la corrente elettrica che attraversa un conduttore tra 2 punti è direttamente proporzionale alla tensione applicata a questi 2 punti.</p>   
-  <h2>Biografia su George Simon Ohm:</h2>
-  <p>Georg Simon Ohm fu un fisico tedesco noto per aver formulato la Legge di Ohm, che stabilisce la relazione tra tensione, corrente e resistenza elettrica. La sua opera principale fu pubblicata nel 1827 e inizialmente non fu ben accolta, ma successivamente ottenne il riconoscimento meritato, inclusa la Medaglia Copley nel 1841. L'unità di misura della resistenza elettrica, l'ohm (Ω), porta il suo nome.</p>
-  
-</section>
-
-<!-- Band Members -->
-<section class="w3-row-padding w3-center w3-light-grey">
-
-    <p>Georg Simon Ohm</p>
-    <img src="ohm.jpg" width="150" height="100"
-  
-  </article>
-  <article class="w3-third">
  
-</section>
 
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge">
-  <a href="#"><i class="fa fa-facebook-official"></i></a>
-  <a href="#"><i class="fa fa-pinterest-p"></i></a>
-  <a href="#"><i class="fa fa-twitter"></i></a>
-  <a href="#"><i class="fa fa-flickr"></i></a>
-  <a href="#"><i class="fa fa-linkedin"></i></a>
-  <p class="w3-medium">
-  Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
-  </p>
-</footer>
+    <div class="dropdown">
+      <button class="dropbtn">Js
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="https://alenigro00.github.io/STA/js1.html">Js1</a>
+        <a href="https://alenigro00.github.io/STA/js2.html">Js2</a>
+        <a href="https://alenigro00.github.io/STA/js3.html">Js3</a>
+        <a href="https://alenigro00.github.io/STA/js4.html">Js4</a>
+        <a href="https://alenigro00.github.io/STA/selezione1.html">Selezione 1</a>
+        <a href="https://alenigro00.github.io/STA/selezione2.html">Selezione 2</a>
+        <a href="https://alenigro00.github.io/STA/selezione3.html">Selezione 3</a>
+      
+        
+      </div>
+    </div>
+
+  <a href="https://alenigro00.github.io/STA/flipcard.html">About</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>ù
+<h1>PAGINA WEB PRIMA LEGGE DI OHM</h1>
+<h2>Definizione prima legge di Ohm:</h2>
+<p>La prima legge di Ohm afferma che la corrente elettrica che attraversa un conduttore tra 2 punti è direttamente proporzionale alla tensione applicata a questi 2 punti.</p>;
+
+
+<h2>Calcolatore legge di Ohm</h2>
+<ul>
+  <li>V = voltaggio (Volt)</li>
+  <li>I = intensità di corrente (Ampere)</li>
+  <li>R = resistenza (Ohm)</li>
+</ul>
+<input type="text" id="formula" placeholder="Inserisci una formula (1, 2 o 3)" oninput="calcola()"><br>
+<input type="text" id="v1" placeholder="Inserisci il primo valore" oninput="calcola()"><br>
+<input type="text" id="v2" placeholder="Inserisci il secondo valore" oninput="calcola()"><br>
+<p id="output"></p>
+<script>
+  function calcola() {
+    let formula = document.getElementById("formula").value;
+    let v1 = document.getElementById("v1").value;
+    let v2 = document.getElementById("v2").value;
+    let risultato;
+    if (formula == "1") {
+      risultato = v1 * v2;
+      document.getElementById("output").innerText = "Il voltaggio (V) è: " + risultato + " Volt";
+    } else if (formula == "2") {
+      risultato = v1 / v2;
+      document.getElementById("output").innerText = "L'intensità di corrente (I) è: " + risultato + " Ampere";
+    } else if (formula == "3") {
+      risultato = v1 / v2;
+      document.getElementById("output").innerText = "La resistenza (R) è: " + risultato + " Ohm";
+    } else {
+      document.getElementById("output").innerText = "Seleziona una formula valida (1, 2 o 3).";
+    }
+  }
+</script>
+
+
+
+
+
 
 <script>
-// Automatic Slideshow - change image every 3 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
   }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}
-  x[myIndex-1].style.display = "block";
-  setTimeout(carousel, 3000);
 }
 </script>
 
 </body>
 </html>
+
 
