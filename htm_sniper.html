@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTMsniper</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  :root { --accento: #00f2fe; }
+
+  body {
+    background: linear-gradient(135deg, #022082);
+    color: white;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  #campo {
+    position: relative;
+    width: 100%;
+    height: 65vh;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .bersaglio {
+    position: absolute;
+    border-radius: 50%;
+    cursor: crosshair;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: comparsa 0.3s ease-out;
+    user-select: none;
+  }
+
+  @keyframes comparsa {
+    from { transform: scale(0) rotate(-45deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0);      opacity: 1; }
+  }
+
+  .bersaglio:active { transform: scale(0.9); }
+
+  .schermata {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 12, 41, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .scheda-stat {
+    background: #145ddf;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border-bottom: 3px solid var(--accento);
+  }
+
+  .pulsante-neon {
+    background: var(--accento);
+    color: #0f0c29;
+    font-weight: bold;
+    padding: 12px 40px;
+    border-radius: 50px;
+    border: none;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+  }
+
+  .pulsante-neon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+    background: white;
+  }
+
+  #barra-tempo {
+    height: 8px;
+    background: linear-gradient(90deg, #0059fe, #4f9bfe);
+    border-radius: 10px;
+    transition: width 1s linear;
+  }
+</style>
+</head>
+<body class="p-4">
+
+<div class="container" style="max-width: 800px;">
+  <div class="d-flex justify-content-between mb-4">
+    <div class="scheda-stat">TEMPO: <span id="tempo" class="fw-bold">30</span>s</div>
+    <div class="scheda-stat">SCORE: <span id="punteggio" class="fw-bold">0</span></div>
+    <div class="scheda-stat">HITS:  <span id="colpi" class="fw-bold">0</span></div>
+  </div>
+
+  <div class="bg-dark rounded-pill mb-4" style="height: 8px; overflow: hidden;">
+    <div id="barra-tempo" style="width: 100%"></div>
+  </div>
+
+  <div id="campo">
+    <div class="schermata" id="schermata-inizio">
+      <h1 class="display-4 fw-bold mb-4">HTMsniper</h1>
+      <div class="lead opacity-75 mb-4">
+        <p class="mb-2">Colpisci i bersagli velocemente per il punteggio massimo.</p>
+        <div class="small border-top border-secondary pt-3 mt-3">
+          <strong class="d-block mb-1">Punteggi:</strong>
+          <span class="d-block">🔴 Grandi: 5 punti</span>
+          <span class="d-block">🔵 Medi: 10 punti</span>
+          <span class="d-block">🟣 Piccoli: 20 punti</span>
+        </div>
+      </div>
+      <button class="pulsante-neon" onclick="avviaPartita()">INIZIA SFIDA</button>
+    </div>
+
+    <div class="schermata d-none" id="schermata-fine">
+      <h2 class="display-5 mb-2">PARTITA FINITA</h2>
+      <div class="my-4">
+        <h1 id="fine-punteggio" class="display-2 fw-bold text-info">0</h1>
+        <p class="text-uppercase opacity-50">Punti Totali</p>
+      </div>
+      <div class="d-flex gap-4 mb-5">
+        <div><small class="d-block opacity-50">HITS</small><strong id="fine-colpi" class="fs-4">0</strong></div>
+        <div><small class="d-block opacity-50">REACT</small><strong id="fine-reazione" class="fs-4">0</strong>ms</div>
+      </div>
+      <button class="pulsante-neon" onclick="avviaPartita()">RIGIOCA</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Durata totale della partita in secondi
+var DURATA = 30;
+
+// Lista dei tipi di bersaglio con le loro proprietà visive e di punteggio
+var tipiBersaglio = [
+  { dimensione: 70, punti: 5,  colore: 'linear-gradient(135deg, #e53935, #ef9a9a)', bagliore: '#e53935' }, // bersaglio grande, rosso, vale poco
+  { dimensione: 50, punti: 10, colore: 'linear-gradient(135deg, #2193b0, #6dd5ed)', bagliore: '#2193b0' }, // bersaglio medio, blu
+  { dimensione: 30, punti: 20, colore: 'linear-gradient(135deg, #7b1fa2, #ce93d8)', bagliore: '#9c27b0' }  // bersaglio piccolo, viola, vale di più
+];
+
+// Punteggio accumulato dal giocatore durante la partita
+var punteggio = 0;
+// Numero di bersagli colpiti con successo
+var colpi = 0;
+// Secondi rimasti alla fine della partita
+var tempoRimanente = 0;
+// Somma dei tempi di reazione in millisecondi (usata per calcolare la media)
+var sommaReazione = 0;
+// Flag che indica se la partita è in corso
+var attivo = false;
+// Riferimento all'intervallo che fa scorrere il timer ogni secondo
+var intervalloTimer = null;
+// Riferimento al timeout che fa comparire un nuovo bersaglio automaticamente
+var timeoutComparsa = null;
+
+// Aggiorna i valori mostrati a schermo: tempo, punteggio, colpi e larghezza della barra del tempo
+function aggiornaStat() {
+  document.getElementById('tempo').textContent = tempoRimanente;
+  document.getElementById('punteggio').textContent= punteggio;
+  document.getElementById('colpi').textContent = colpi;
+  // La larghezza della barra è proporzionale al tempo rimasto rispetto alla durata totale
+  document.getElementById('barra-tempo').style.width = (tempoRimanente / DURATA * 100) + '%';
+}
+
+// Crea e posiziona un nuovo bersaglio casuale nel campo di gioco
+function compariBersaglio() {
+  // Se la partita non è attiva non fare nulla
+  if (!attivo) return;
+
+  var campo = document.getElementById('campo');
+
+  // Rimuove il bersaglio precedente se ancora presente
+  var vecchio = campo.querySelector('.bersaglio');
+  if (vecchio) vecchio.remove();
+
+  // Sceglie un tipo di bersaglio a caso tra quelli disponibili
+  var tipo = tipiBersaglio[Math.floor(Math.random() * tipiBersaglio.length)];
+
+  // Crea l'elemento HTML che rappresenta il bersaglio
+  var bersaglio = document.createElement('div');
+
+  // Calcola una posizione casuale che tenga il bersaglio dentro i bordi del campo
+  var x = Math.random() * (campo.offsetWidth  - tipo.dimensione);
+  var y = Math.random() * (campo.offsetHeight - tipo.dimensione);
+
+  // Registra il momento esatto in cui il bersaglio compare (usato per il tempo di reazione)
+  var tempoComparsa = Date.now();
+
+  // Assegna la classe CSS e il testo con i punti
+  bersaglio.className   = 'bersaglio';
+  bersaglio.textContent = '+' + tipo.punti;
+
+  // Applica le proprietà visive: dimensione, posizione, colore e bagliore
+  bersaglio.style.width = tipo.dimensione + 'px';
+  bersaglio.style.height = tipo.dimensione + 'px';
+  bersaglio.style.left = x + 'px';
+  bersaglio.style.top = y + 'px';
+  bersaglio.style.background= tipo.colore;
+  bersaglio.style.boxShadow = '0 0 20px ' + tipo.bagliore;
+  bersaglio.style.fontSize= (tipo.dimensione * 0.3) + 'px';
+
+  // Quando il giocatore clicca sul bersaglio: aggiorna punteggio, colpi e reazione, poi fa comparire il prossimo
+  bersaglio.onclick = function() {
+    punteggio+= tipo.punti;                    // aggiunge i punti del bersaglio colpito
+    colpi++;                                        // incrementa il contatore dei colpi andati a segno
+    sommaReazione += Date.now() - tempoComparsa;    // aggiunge il tempo impiegato a cliccare
+    aggiornaStat();                                 // aggiorna i valori a schermo
+    compariBersaglio();                             // fa comparire subito il bersaglio successivo
+  };
+
+  // Aggiunge il bersaglio al campo di gioco
+  campo.appendChild(bersaglio);
+
+  // Cancella il timeout precedente ed imposta quello nuovo: se il giocatore non clicca entro 1,8s il bersaglio cambia
+  clearTimeout(timeoutComparsa);
+  timeoutComparsa = setTimeout(compariBersaglio, 1800);
+}
+
+// Eseguita ogni secondo dall'intervalloTimer: scala il tempo e controlla se la partita è finita
+function segnaSecondo() {
+  tempoRimanente--;               // sottrae un secondo al tempo rimasto
+  aggiornaStat();                 // aggiorna il timer e la barra a schermo
+  if (tempoRimanente <= 0) finePartita(); // se il tempo è esaurito termina la partita
+}
+
+// Termina la partita, mostra i risultati finali e nasconde il campo
+function finePartita() {
+  attivo = false;                         // blocca la logica di gioco
+  clearInterval(intervalloTimer);         // ferma il timer che scorre i secondi
+  clearTimeout(timeoutComparsa);          // cancella la comparsa automatica del prossimo bersaglio
+
+  // Rimuove l'eventuale bersaglio rimasto nel campo
+  var campo = document.getElementById('campo');
+  var rimanente = campo.querySelector('.bersaglio');
+  if (rimanente) rimanente.remove();
+
+  // Scrive i risultati finali nella schermata di fine partita
+  document.getElementById('fine-punteggio').textContent = punteggio;
+  document.getElementById('fine-colpi').textContent = colpi;
+  // Calcola la media dei tempi di reazione; se non ci sono colpi mostra 0
+  document.getElementById('fine-reazione').textContent = colpi ? Math.round(sommaReazione / colpi) : 0;
+
+  // Mostra la schermata di fine partita
+  document.getElementById('schermata-fine').classList.remove('d-none');
+}
+
+// Avvia (o riavvia) una nuova partita azzerando tutto e facendo partire il timer
+function avviaPartita() {
+  // Azzera tutte le variabili di stato
+  punteggio = 0;
+  colpi  = 0;
+  sommaReazione = 0;
+  tempoRimanente= DURATA;
+  attivo = true;
+
+  // Nasconde tutte le schermate (inizio e fine) per mostrare il campo libero
+  document.querySelectorAll('.schermata').forEach(function(schermata) { schermata.classList.add('d-none'); });
+
+  // Aggiorna subito i valori a schermo prima che parta il conto alla rovescia
+  aggiornaStat();
+
+  // Ferma un eventuale timer rimasto da una partita precedente, poi ne avvia uno nuovo
+  clearInterval(intervalloTimer);
+  intervalloTimer = setInterval(segnaSecondo, 1000); // chiama segnaSecondo ogni 1000ms
+
+  // Fa comparire il primo bersaglio
+  compariBersaglio();
+}
+</script>
+</body>
+</html>
